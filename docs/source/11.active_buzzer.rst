@@ -1,0 +1,44 @@
+Project11.Active Buzzer
+=========================
+
+Description
+------------
+Here is the simplest sound making module. You can use high/low level to drive it. 
+Changing the frequency it buzzes can produce different sounds.
+
+This module is widely used on our daily appliances like PC, refrigerator, phones, etc.
+
+In addition, you can create many interesting interactive projects with this small 
+but useful module. Just try it!! You will find the electronic sound it creates so fascinating.
+
+Specification
+--------------
+- Working voltage: 3.3-5v
+- Interface type: digital
+- Size: 30*20mm
+- Weight: 4g
+
+Connect
+--------
+.. image:: /img/connect/11_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int buzzPin =3;    //Connect Buzzer on Digital Pin3
+    void setup()  
+    {        
+    pinMode(buzzPin, OUTPUT);     
+    }
+    void loop()                     
+    {
+    digitalWrite(buzzPin, HIGH);
+    delay(1000);
+    digitalWrite(buzzPin, LOW); 
+    delay(1000);        
+    }
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/11.jpg

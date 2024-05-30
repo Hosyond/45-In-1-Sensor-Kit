@@ -1,0 +1,55 @@
+Project45.Ultrasonic Module
+===============================
+
+Description
+------------
+As the ultrasonic has strong directivity, slow energy consumption and far spread 
+distance in the media, so it is commonly used in the measurement of distance, 
+such as range finder and position measuring instrument. Ultrasonic detector 
+module can provide 2cm-450cm non-contact sensing distance, and its ranging accuracy 
+is up to 3mm, very good to meet the normal requirements. The module includes an 
+ultrasonic transmitter and receiver as well as the corresponding control circuit.
+
+
+Specification
+--------------
+- Working voltage：0.5V(DC)
+- Working current：15mA
+- Detecting range：2-450cm
+- Detecting angle：15 degrees
+- Input trigger pulse：10us TTL Level
+- Output echo signal： output TTL level signal(HIGH)，proportional to range.
+
+Connect
+--------
+.. image:: /img/connect/45_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int inputPin=4; // define ultrasonic signal receiver pin ECHO to D4 
+    int outputPin=5; // define ultrasonic signal transmitter pin TRIG to D5
+    void setup()
+    {
+    Serial.begin(9600); 
+    pinMode(inputPin, INPUT); 
+    pinMode(outputPin, OUTPUT);
+
+    }
+    void loop()
+    {
+    digitalWrite(outputPin, LOW); delayMicroseconds(2);
+    digitalWrite(outputPin, HIGH); // Pulse for 10μ s to trigger ultrasonic detection
+    delayMicroseconds(10); 
+    digitalWrite(outputPin, LOW);
+    int distance = pulseIn(inputPin, HIGH); // Read receiver pulse time 
+    distance= distance/58; // Transform pulse time to distance 
+    Serial.println(distance); //Output distance
+    delay(50);
+    }
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/45.jpg

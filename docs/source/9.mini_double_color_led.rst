@@ -1,0 +1,56 @@
+Project9.Mini Double Color Led
+================================
+
+Description
+------------
+The KY-011 Two Color LED module emits red and green light. You can adjust the 
+intensity of each color using PWM.
+Compatible with popular electronics platforms like Arduino, Raspberry Pi, ESP32 
+and more. This module is similar to the KY-029.
+
+Specification
+--------------
+- Operating Voltage	2.0v ~ 2.5v
+- Working Current	10mA
+- Diameter	3mm
+- Package Type	Diffusion
+- Color	Red + Green
+- Beam Angle	150
+- Wavelength	571nm + 644nm
+- Luminosity Intensity (MCD)	20-40; 40-80
+
+Connect
+--------
+.. image:: /img/connect/9_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int greenpin = 11; // pin for green signal
+    int redpin = 10; // pin for red signal
+    int val;
+
+    void setup() {
+        pinMode(redpin, OUTPUT);
+        pinMode(greenpin, OUTPUT);
+    }
+
+    void loop() {
+        for(val = 255; val > 0; val--) { 
+            analogWrite(redpin, val); //dim red
+            analogWrite(greenpin, 255 - val); // brighten green
+            delay(15);
+        }
+        for(val = 0; val < 255; val++) { 
+            analogWrite(redpin, val); //brighten red
+            analogWrite(greenpin, 255 - val); //dim green
+            delay(15);
+        }
+    }
+
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/9.jpg

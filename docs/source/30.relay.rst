@@ -1,0 +1,52 @@
+Project30.Relay
+===================
+
+Description
+------------
+The KY-019 consist of a 1MΩ resistor, a LED, a 1N4007 rectifier diode and a 5VDC 
+relay capable of handling up to 250VAC and 10A.
+
+On the DC side of the board there are 3 male header pins for signal, power and 
+ground. On the AC side there are 3 contacts, NC (Normally Closed),  Common and 
+NO (Normally Open).
+
+
+Specification
+--------------
+- TTL Control Signal	5VDC to 12VDC (some boards may work with 3.3)
+- Maximum AC	10A 250VAC
+- Maximum DC	10A 30VDC
+- Contact Type	NC and NO
+- Board Dimensions	27mm x 34mm
+
+
+Connect
+--------
+.. image:: /img/connect/30_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int Relay = 8;
+    void setup()
+    {
+    pinMode(13, OUTPUT);         //Set Pin13 as output
+    digitalWrite(13, HIGH);     //Set Pin13 High
+    pinMode(Relay, OUTPUT);     //Set Pin3 as output
+    }
+    void loop()
+    {
+            digitalWrite(Relay, HIGH);   //Turn off relay
+            delay(1000);
+            digitalWrite(Relay, LOW);    //Turn on relay
+            delay(1000);
+    }
+
+For this experiment, we use a laser emission module connected to a relay, but 
+we could also use other LED modules.
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/30.jpg

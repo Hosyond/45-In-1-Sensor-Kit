@@ -1,0 +1,71 @@
+Project42.Soil Moisture Sensor
+==============================
+
+Description
+------------
+The soil moisture sensor or the hygrometer is usually used to detect the humidity 
+of the soil. So, it is perfect to build an automatic watering system or to monitor 
+the soil moisture of your plants.
+
+The sensor is set up by two pieces: the electronic board (at the right), and the 
+probe with two pads, that detects the water content (at the left).
+
+The sensor has a built-in potentiometer for sensitivity adjustment of the digital 
+output (D0), a power LED and a digital output LED, as you can see in the following 
+figure.
+
+Specification
+--------------
+
+
+Connect
+--------
+.. image:: /img/connect/42_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int rainPin = A0;
+    int ledPin = 13;
+
+    // you can adjust the threshold value
+    int thresholdValue = 800;
+
+    void setup(){
+    pinMode(rainPin, INPUT);
+    pinMode(ledPin, OUTPUT);  // Set the LED pin as the output mode
+    Serial.begin(9600);
+    }
+
+    void loop() {
+    // read the input on analog pin 0:
+    int sensorValue = analogRead(rainPin);
+    Serial.print(sensorValue);
+
+    if(sensorValue < thresholdValue){
+        Serial.println(" - Doesn't need watering");
+        digitalWrite(ledPin, LOW);  // If you don't need to water, turn off the LED
+    } else {
+        Serial.println(" - Time to water your plant");
+        // If you need to water, flash the LED quickly
+        for(int i = 0; i < 5; i++){
+        digitalWrite(ledPin, HIGH); 
+        delay(100);                 
+        digitalWrite(ledPin, LOW);   
+        delay(100);                 
+        }
+        digitalWrite(ledPin, LOW);
+    }
+    delay(500);  //
+    }
+
+Whenever the soil is short of water, the LED on the Arduino will flash five times
+continuously, and it will output "Time to water your plant" in the serial monitor.
+
+If there is no shortage of water, the LED will not light up
+
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/42.jpg

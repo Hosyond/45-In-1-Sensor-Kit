@@ -1,0 +1,64 @@
+Project36.Reed Switch Module
+==============================
+
+Description
+------------
+The KY-025 Reed Switch Module is a small electrical switch operated by an applied 
+magnetic field, commonly used as proximity sensor.
+The module has both digital and analog outputs. A trimmer is used to calibrate 
+the sensitivity of the sensor.
+Compatible with Arduino, Raspberry Pi, ESP32 and other microcontrollers. 
+For digital output only use the :doc:`KY-021 mini reed switch <26.reed_switch>`.
+
+Specification
+--------------
+Operation Voltage	3.3V ~ 5.5V
+Board Dimensions	1.5cm x 3.6cm
+
+
+Connect
+--------
+.. image:: /img/connect/36_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int led = 13; // define the LED pin
+    int digitalPin = 2; // KY-028 digital interface
+    int analogPin = A0; // KY-028 analog interface
+    int digitalVal; // digital readings
+    int analogVal; //analog readings
+
+    void setup()
+    {
+    pinMode(led, OUTPUT);
+    pinMode(digitalPin, INPUT);
+    //pinMode(analogPin, OUTPUT);
+    Serial.begin(9600);
+    }
+
+    void loop()
+    {
+    // Read the digital interface
+    digitalVal = digitalRead(digitalPin); 
+    if(digitalVal == HIGH) // if temperature threshold reached
+    {
+        digitalWrite(led, HIGH); // turn ON Arduino's LED
+    }
+    else
+    {
+        digitalWrite(led, LOW); // turn OFF Arduino's LED
+    }
+
+    // Read the analog interface
+    analogVal = analogRead(analogPin); 
+    Serial.println(analogVal); // print analog value to serial
+
+    delay(100);
+    }
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/36.jpg

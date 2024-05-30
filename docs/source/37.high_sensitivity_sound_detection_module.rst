@@ -1,0 +1,81 @@
+Project37.High Sensitivity Sound Detection Module
+===================================================
+
+Description
+------------
+The KY-037 high sensitivity sound detection module is an analog/digital sensor 
+that uses a condenser microphone to observe changes in environment noise. Generally 
+used to detect sound above certain levels. It has a potentiometer to set the noise 
+detection threshold.
+
+The digital output provides a HIGH signal when sound above the threshold is 
+detected. The analog output shows values representing the noise levels detected 
+by the condenser microphone, the values are relative to the provided voltage and 
+potentiometer position, making it difficult to reconstruct the audio from the 
+obtained values.
+
+This module is compatible with popular microcontroller platforms like Arduino, 
+ESP32, ESP8266, and Raspberry Pi.
+
+Specification
+--------------
+- Operating voltage	3.3V ~ 5.5V
+- Microphone sensitivity	-42 ±3 db
+- Current consumption	~0.5mA
+- Board Dimensions	15mm x 36mm
+
+Connect
+--------
+.. image:: /img/connect/37_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int digitalPin = 7;   // KY-037 digital interface
+    int analogPin = A0;   // KY-037 analog interface
+    int ledPin = 13;      // Arduino LED pin
+    int digitalVal;       // digital readings
+    int analogVal;        // analog readings
+
+    void setup()
+    {
+    pinMode(digitalPin,INPUT); 
+    pinMode(analogPin, INPUT);
+    pinMode(ledPin,OUTPUT);      
+    Serial.begin(9600);
+    }
+
+    void loop()
+    {
+    // Read the digital inteface
+    digitalVal = digitalRead(digitalPin); 
+    
+    if(digitalVal == HIGH) 
+    {
+        digitalWrite(ledPin, HIGH); // Turn ON Arduino's LED
+    }
+    else
+    {
+        digitalWrite(ledPin, LOW);  // Turn OFF Arduino's LED
+    }
+
+    // Read analog interface
+    analogVal = analogRead(analogPin);
+    // Print analog value to serial
+    Serial.println(analogVal);  
+    }
+
+Calibrate the module’s detection threshold using the potentiometer. Turn it clockwise 
+to increase detection sensitivity, or turn it counter-clockwise to decrease detection 
+sensitivity.
+
+If the module’s L2 LED is on, the noise levels are above the threshold and you 
+should decrease the sensitivity. If the L2 LED is off, the noise level is below 
+the threshold and you should increase the sensitivity. Turn the potentiometer to 
+find the exact point where the LED changes its state.
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/37.jpg

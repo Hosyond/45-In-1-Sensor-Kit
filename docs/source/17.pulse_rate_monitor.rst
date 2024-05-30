@@ -1,0 +1,54 @@
+Project17.Pulse Rate Monitor
+===============================
+
+Description
+------------
+This module makes use of a ultra-clear infrared LED and a phototransistor to 
+detect the pulse in your finger. The red LED will flash in time with your pulse.
+
+Shine the bright LED onto one side of your finger while the phototransistor on 
+the other side of your finger picks up the amount of transmitted light. The 
+resistance of the phototransistor will vary slightly as the blood pulses through 
+your finger.
+
+Specification
+--------------
+
+Connect
+--------
+.. image:: /img/connect/17_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int ledPin = 13;
+    int sensorPin = 0;
+    double alpha = 0.75;
+    int period = 20;
+    double change = 0.0;
+    void setup()
+    {
+    pinMode(ledPin, OUTPUT);
+    Serial.begin(115200);
+    }
+    void loop()
+    {
+    static double oldValue = 0;
+    static double oldChange = 0;
+    int rawValue = analogRead(sensorPin);
+    double value = alpha * oldValue + (1 - alpha) * rawValue;
+    Serial.print(rawValue);
+    Serial.print(",");
+    Serial.println(value);
+    oldValue = value;
+    delay(period);
+    }
+
+
+
+Phenomenon
+-----------
+
+
+.. image:: /img/phenomenon/17.jpg

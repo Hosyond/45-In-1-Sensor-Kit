@@ -1,0 +1,40 @@
+Project.4 Laser Module
+=========================
+
+Description
+------------
+The KY-008 is a laser transmitter module that creates a dot-shaped laser beam 
+that can be used as a laser pointer or to create mini laser shows.
+
+
+Specification
+--------------
+- Wavelength: 650 nm (Red)
+- Laser Power: 5 mW
+- Operating Voltage: 3-5 volts
+- Operating Current: ~ 30 mA
+
+Connect
+--------
+.. image:: /img/connect/4_bb.png
+
+Code
+-----
+.. code-block:: C
+
+    void setup() {
+    pinMode(9, OUTPUT);  
+    }
+
+    void loop() {
+    digitalWrite(9, HIGH);
+    delay(300);
+    
+    digitalWrite(9, LOW);
+    delay(700);
+    }
+
+
+Phenomenon
+------------
+.. image:: /img/phenomenon/4.jpg

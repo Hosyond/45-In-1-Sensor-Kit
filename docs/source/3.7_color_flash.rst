@@ -1,0 +1,24 @@
+Project.3 7 Color Flash
+=========================
+
+Description
+------------
+This is a seven-color flashing module that can emit seven colors, including red, green, and blue. 
+
+
+Specification
+--------------
+- Color: 7
+- Brightness: High
+- Voltage: 5V
+- Input: Digital Level
+- Size: 30*20mm
+- Weight: 3g
+
+Connect
+--------
+.. image:: /img/connect/3_bb.png
+
+Phenomenon
+------------
+.. image:: /img/phenomenon/3.jpg

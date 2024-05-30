@@ -1,0 +1,51 @@
+Project24.KY-003 Hall Sensor
+==============================
+
+Description
+------------
+The KY-003 Hall Magnetic Sensor module is a switch that reacts to the presence 
+of a magnetic field, turning itself on or off. Compatible with popular microcont
+rolers like Arduino, Raspberry Pi and ESP32.This module offers a digital output.
+
+
+Specification
+--------------
+- Operating Voltage	4.5V to 24V
+- Operating Temperature Range	-40°C to 85°C
+- Board Dimensions	18.5mm x 15mm
+
+Connect
+--------
+.. image:: /img/connect/24_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int led = 13;//LED pin
+    int sensor = 3; //sensor pin
+    int val; //numeric variable
+
+    void setup()
+    {
+        pinMode(led, OUTPUT); //set LED pin as output
+        pinMode(sensor, INPUT); //set sensor pin as input
+    }
+
+    void loop()
+    {
+        val = digitalRead(sensor); //Read the sensor
+        if(val == LOW) //when magnetic field is detected, turn led on
+        {
+            digitalWrite(led, HIGH);
+        }
+        else
+        {
+            digitalWrite(led, LOW);
+        }
+    }
+
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/24.jpg

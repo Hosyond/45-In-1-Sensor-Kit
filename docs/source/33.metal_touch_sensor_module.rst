@@ -1,0 +1,69 @@
+Project33.Metal Touch Sensor Module
+=====================================
+
+Description
+------------
+The KY-036 Metal Touch Sensor Module is an analog/digital sensor that uses a 
+transistor to detect changes in electrical conductivity. When the transistor is 
+touched with a finger, the conductivity changes and the module emits a digital 
+and analog signal.
+
+The digital output can be used a switch that changes state when touched. The 
+analog output can measure the intensity of the touch. The detection threshold 
+can be regulated using the on-board potentiometer.
+
+Compatible with popular microcontroller boards like Arduino, ESP32, ESP8266 and 
+Raspberry.
+
+Specification
+--------------
+- Operating voltage	3.3V ~ 5.5V
+- Board Dimensions	15mm x 36mm
+
+Connect
+--------
+.. image:: /img/connect/33_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int digitalPin = 7;   // KY-036 digital interface
+    int analogPin = A0;   // KY-036 analog interface
+    int ledPin = 13;      // Arduino LED pin
+    int digitalVal;       // digital readings
+    int analogVal;        // analog readings
+
+    void setup()
+    {
+    pinMode(digitalPin,INPUT); 
+    pinMode(analogPin, INPUT);
+    pinMode(ledPin,OUTPUT);      
+    Serial.begin(9600);
+    }
+
+    void loop()
+    {
+    // Read the digital inteface
+    digitalVal = digitalRead(digitalPin); 
+    
+    if(digitalVal == HIGH) 
+    {
+        digitalWrite(ledPin, HIGH); // Turn ON Arduino's LED
+    }
+    else
+    {
+        digitalWrite(ledPin, LOW);  // Turn OFF Arduino's LED
+    }
+
+    // Read analog interface
+    analogVal = analogRead(analogPin);
+    Serial.println(analogVal);  // Print analog value to serial
+
+    delay(100);
+    }
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/33.jpg

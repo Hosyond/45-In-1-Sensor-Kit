@@ -1,0 +1,29 @@
+Project41.MP1854EN
+===================
+
+Description
+------------
+This is a tiny, powerful step-down (Buck) switching voltage converter with a wide operating range.
+This device is about the size of a US Quarter.
+The output is set with a potentiometer.
+
+Specification
+--------------
+- IC Chip: Monolithic Power Systems (MPS) MP1584EN
+- Input Voltage: 4.5V to 28V
+- Output Voltage:0.8V to 20V
+- Output Current: 1.8 A typical (3.0 Max)
+- Conversion Efficiency: Up to 96%
+- Output Ripple: <30mV
+- Switching Frequency: Up to 1.5MHz, typical 1MHz
+- Operating Temperature: -45°C to +85°C
+- Size Dimensions: 22mm * 17mm * 4mm (Length * Width * Height)
+
+Product Image
+--------------
+.. note::Pay attention to the current direction.
+
+.. image:: /img/phenomenon/41-1.jpg
+
+.. image:: /img/phenomenon/41-2.jpg
+

@@ -1,0 +1,55 @@
+Project28.Line Tracking Sensor Module
+========================================
+
+Description
+------------
+The KY-033 Line Tracking module is an infrared sensor that detects whether the 
+surface in front of it is reflective or opaque. Sensitivity to ambient light can 
+be adjusted using the knob to achieve a fairly accurate reading.
+
+This sensor is typically used on wheeled robots and can operate at 3.3V to 5V 
+which makes it compatible with a variety of microcontrollers like Arduino, ESP32
+, Raspberry Pi, ESP8266, Teensy, and others.
+
+Specification
+--------------
+- Working voltage	3.3V — 5.5V DC
+- Output signal	TTL level (high level if line detected, low if no line detected)
+- Board Size	1cm x 4.2cm
+
+Connect
+--------
+.. image:: /img/connect/28_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int sensorPin = 7;  // line detection sensor interface
+    int val;            // variable to store sensor reading
+
+    void setup() {
+    pinMode(sensorPin,INPUT);  // define sensor as input  
+    Serial.begin(9600);     // initialize serial communication with PC
+    }
+
+    void loop() {
+    val = digitalRead(sensorPin); // read value from sensor
+    
+    if (val == HIGH) { 
+        Serial.println("Line detected"); 
+    } else { 
+        Serial.println("Line NOT detected"); 
+    }
+
+    delay(500);
+    }
+
+The signal will be HIGH when the module is in front of an opaque (black) surface, 
+indicating that a line has been detected. The signal will be LOW when the module 
+is in front of a reflective (white) surface, meaning that a line is not detected.
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/28.jpg

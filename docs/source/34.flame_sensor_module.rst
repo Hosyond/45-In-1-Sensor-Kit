@@ -1,0 +1,68 @@
+Project34.Flame Sensor Module
+==============================
+
+Description
+------------
+The KY-026 Flame Sensor module detects infrared light emitted by fire. This 
+module has both digital and analog outputs and a potentiometer to adjust the 
+sensitivity. Commonly used in fire detection systems.
+
+Compatible with Arduino, Raspberry Pi, ESP32 and other microcontrollers.
+
+
+
+Specification
+--------------
+- Operating Voltage	3.3V ~ 5.5V
+- Infrared Wavelength Detection	760nm ~ 1100nm
+- Sensor Detection Angle	60°
+- Board Dimensions	1.5cm x 3.6cm
+
+
+Connect
+--------
+.. image:: /img/connect/34_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int led = 13; // define the LED pin
+    int digitalPin = 2; // KY-026 digital interface
+    int analogPin = A0; // KY-026 analog interface
+    int digitalVal; // digital readings
+    int analogVal; //analog readings
+
+    void setup()
+    {
+    pinMode(led, OUTPUT);
+    pinMode(digitalPin, INPUT);
+    //pinMode(analogPin, OUTPUT);
+    Serial.begin(9600);
+    }
+
+    void loop()
+    {
+    // Read the digital interface
+    digitalVal = digitalRead(digitalPin); 
+    if(digitalVal == HIGH) // if flame is detected
+    {
+        digitalWrite(led, HIGH); // turn ON Arduino's LED
+    }
+    else
+    {
+        digitalWrite(led, LOW); // turn OFF Arduino's LED
+    }
+
+    // Read the analog interface
+    analogVal = analogRead(analogPin); 
+    Serial.println(analogVal); // print analog value to serial
+
+    delay(100);
+    }
+
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/34.jpg

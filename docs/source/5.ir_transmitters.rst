@@ -1,0 +1,50 @@
+Project5.Digital IR Transmitters
+==================================
+
+Description
+------------
+IR transmitter module is designed for IR communication, which is widely used for
+operating the television device from a short line-of-sight distance. Since 
+infrared (IR) remote control uses light, it requires line of sight to operate 
+the destination device. The signal can, however, be reflected by mirrors, just 
+like any other light sources. Infrared receivers also tend to have a more or 
+less limited operating angle, which mainly depends on the optical characteristics 
+of the phototransistor. However, it’s easy to increase the operating angle 
+using a matte transparent object in front of the receiver.
+
+
+Specification
+--------------
+- Power Supply: 3-5V
+- Infrared center frequency: 850nm-940nm
+- Infrared emission angle: about 20 degrees
+- Infrared emission distance: about 1.3m (5V 38Khz)
+- Interface socket: JST PH2.0
+- Mounting hole: inner diameter is 3.2mm, spacing is 15mm
+
+Connect
+--------
+.. image:: /img/connect/5_bb.png
+
+Code
+-----
+.. code-block:: c
+    
+    int led = 3;
+    void setup() {                
+    pinMode(led, OUTPUT);     
+    }
+    void loop() {
+    digitalWrite(led, HIGH);  
+
+    delay(1000);               
+    digitalWrite(led, LOW);   
+    delay(1000); }
+
+In the darkness of the environment, you are going to see blinking blue light on 
+phone’s screen when using camera to shoot the infrared LED. Upload well the above 
+code to the board, the led on the sensor will blink red light. 
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/5.jpg

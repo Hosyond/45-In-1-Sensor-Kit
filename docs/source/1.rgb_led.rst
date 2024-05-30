@@ -1,0 +1,53 @@
+Project.1 RGB LED
+===================
+
+Description
+------------
+This is a full-color LED module, which contains 3 basic colors－red, green and blue. They can be seen as separate LED lights. After programming, you can turn them on and off by sequence or can also use PWM analog output to mix three colors to generate different colors.
+
+
+Specification
+--------------
+- Color: Red, Green, and Blue
+- Brightness: High
+- Voltage: 5V
+- Input: Digital Level
+- Size: 30*20mm
+- Weight: 3g
+
+Connect
+--------
+.. image:: /img/connect/1_bb.png
+
+Code
+-----
+.. code-block:: C
+
+    int redpin = 11;    //select the pin for the red LED
+    int bluepin = 10;   // select the pin for the blue LED
+    int greenpin = 9;   // select the pin for the green LED
+    int val;
+    void setup() {
+        pinMode(redpin, OUTPUT);
+        pinMode(bluepin, OUTPUT);
+        pinMode(greenpin, OUTPUT);
+    }
+    void loop()
+    { for (val = 255; val > 0; val--)
+        { analogWrite(11, val);
+        analogWrite(10, 255 - val);
+        analogWrite(9, 128 - val);
+        delay(1);
+        }
+        for (val = 0; val < 255; val++)
+        { analogWrite(11, val);
+        analogWrite(10, 255 - val);
+        analogWrite(9, 128 - val);
+        delay(1);
+        }
+    }
+
+
+Phenomenon
+------------
+.. image:: /img/phenomenon/1.jpg

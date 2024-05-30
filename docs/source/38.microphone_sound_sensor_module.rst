@@ -1,0 +1,53 @@
+Project38.Microphone Sound Sensor Module
+===========================================
+
+Description
+------------
+In this tutorial, we will learn about the KY-038 module, how it works and we will 
+build a simple project using the KY-038 module and an Arduino.The KY-038 Module 
+will be our main component for this tutorial. 
+
+This module has a microphone, and an LM393 differential comparator mounted on a 
+breakout board with a potentiometer and several resistors.
+
+Specification
+--------------
+- Operation Voltage	3.3V ~ 5.5V
+- Board Dimensions	1.5cm x 3.5cm
+- Weight: 3.1g
+
+Connect
+--------
+.. image:: /img/connect/38_bb.png
+
+Code
+-----
+.. code-block:: c
+    
+    // Arduino and KY-038 module
+    void setup ()
+    {
+    pinMode (13, OUTPUT); // built-in LED pin set to output
+    pinMode (8, INPUT); // module digital output connected to Arduino pin 8
+    Serial.begin(9600); // initialize serial
+    }
+    void loop ()
+    {
+    // display analog and digital values to serial
+    Serial.print("Analog pin: ");
+    Serial.print(analogRead(A0));
+    Serial.print(" | Digital pin: ");
+    if (digitalRead(8) == HIGH) {
+    Serial.println("High");
+    digitalWrite (13, HIGH); // if module value is higher than threshold,
+    // switch-On built-in LED
+    }
+    else {
+    Serial.println("Low");
+    digitalWrite (13, LOW);
+    }
+    }
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/38.jpg

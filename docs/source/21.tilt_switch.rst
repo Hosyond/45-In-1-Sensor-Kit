@@ -1,0 +1,53 @@
+Project21.Tilt switch
+======================
+
+Description
+------------
+Tilt Sensor is a digital tilt switch. It can be used as a simple tilt switch. 
+Simply plug it to our IO/Sensor shield, easy for wire connection. With dedicated 
+sensor shield and Arduino, you can make lots of interesting and interactive works.
+
+
+Specification
+--------------
+- Supply Voltage: 3.3V to 5V
+- Interface: Digital
+- Size: 30*20mm
+- Weight: 3g
+
+
+Connect
+--------
+.. image:: /img/connect/21_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    int ledPin = 13;                // Connect LED to pin 13
+    int switcher = 3;                 // Connect Tilt sensor to Pin3
+    
+    void setup()
+    {
+    pinMode(ledPin, OUTPUT);      // Set digital pin 13 to output mode
+    pinMode(switcher, INPUT);       // Set digital pin 3 to input mode
+    }
+    void loop()
+    {
+        
+    if(digitalRead(switcher)==LOW) //Read sensor value
+        { 
+            digitalWrite(ledPin, HIGH);   // Turn on LED when the sensor is tilted
+        }
+    else
+        {
+            digitalWrite(ledPin, LOW);    // Turn off LED when the sensor is not triggered
+        }
+    }
+
+
+
+Phenomenon
+-----------
+
+.. image:: /img/phenomenon/21.jpg

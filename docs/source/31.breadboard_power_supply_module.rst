@@ -1,0 +1,41 @@
+Project31.Breadboard Power Supply Module
+==========================================
+
+Description
+------------
+The 3.3V/5V output MB102 Breadboard power supply module is an easy to use, most 
+useful breadboard component that can be added with any breadboard related projects 
+where 5V, 3.3V or both power requirements are required. Its ease of use allows users 
+to connect any DC power supply unit that has 6.5-12 VDC power output from a barrel jack. 
+The board has two independent channels of power output for breadboards. These power 
+channels can be independently configured for 3.3V, 0V, and 5V operations.
+
+The module also offers a push switch to turn OFF and ON the entire power supply module.
+
+An additional feature is a USB input with two 5V, two 3.3V, and 4 GND pinout for 
+additional power pin requirements.
+
+The power LED will notify the user of input power availability status.
+
+
+Specification
+--------------
+- Input voltage: 6.5 - 12V
+- Two Independent Channel
+- Output voltage: 5V, 3.3V (adjustable via jumpers. 0V, 3.3V, and 5V configuration)
+- Output current: Maximum output current 700mA
+- Onboard berg male header for GND, 5V, 3.3V output
+- ON-OFF Switch available.
+- USB (Type-A) input available.
+- DC Barrel Jack input available.
+- Onboard power LED
+- Dimension: 53mm x 33mm (L x W)
+ 
+Detail
+--------
+.. image:: /img/phenomenon/31-1.jpg
+
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/31-2.jpg

@@ -1,0 +1,98 @@
+Project15.DS18B20_sensor
+=========================
+
+Description
+------------
+The DS18B20 temperature sensor is a one-wire digital temperature sensor. This means 
+that it just requires one data line (and GND) to communicate with the Arduino.
+
+It can be powered by an external power supply or it can derive power from the 
+data line (called “parasite mode”), which eliminates the need for an external 
+power supply.
+
+Specification
+--------------
+- -55°C to +85°C temperature measurement range with good accurac
+- 1-wire interface to save on MCU pins
+- LED to indicate module communications
+- 3.3 and 5V compatible
+
+Connect
+--------
+.. image:: /img/connect/15_bb.png
+
+Code
+-----
+.. code-block:: c
+
+    #include <OneWire.h> 
+
+    int DS18S20_Pin = 2; //DS18S20 Signal pin on digital 2
+
+    //Temperature chip i/o
+    OneWire ds(DS18S20_Pin); // on digital pin 2
+
+    void setup(void) {
+    Serial.begin(9600);
+    }
+
+    void loop(void) {
+    float temperature = getTemp();
+    Serial.println(temperature);
+    
+    delay(100); //just here to slow down the output so it is easier to read
+    
+    }
+
+
+    float getTemp(){
+    //returns the temperature from one DS18S20 in DEG Celsius
+
+    byte data[12];
+    byte addr[8];
+
+    if ( !ds.search(addr)) {
+    //no more sensors on chain, reset search
+    ds.reset_search();
+    return -1000;
+    }
+
+    if ( OneWire::crc8( addr, 7) != addr[7]) {
+    Serial.println("CRC is not valid!");
+    return -1000;
+    }
+
+    if ( addr[0] != 0x10 && addr[0] != 0x28) {
+    Serial.print("Device is not recognized");
+    return -1000;
+    }
+
+    ds.reset();
+    ds.select(addr);
+    ds.write(0x44,1); // start conversion, with parasite power on at the end
+
+    byte present = ds.reset();
+    ds.select(addr);  
+    ds.write(0xBE); // Read Scratchpad
+
+    
+    for (int i = 0; i < 9; i++) { // we need 9 bytes
+    data[i] = ds.read();
+    }
+    
+    ds.reset_search();
+    
+    byte MSB = data[1];
+    byte LSB = data[0];
+
+    float tempRead = ((MSB << 8) | LSB); //using two's compliment
+    float TemperatureSum = tempRead / 16;
+    
+    return TemperatureSum;
+    
+    }
+
+
+Phenomenon
+-----------
+.. image:: /img/phenomenon/15.jpg
